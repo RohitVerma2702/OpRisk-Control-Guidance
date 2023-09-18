@@ -1,7 +1,7 @@
 import openai
 import toml
 
-secrets = toml.load("secrets.toml")
+# secrets = toml.load("secrets.toml")
 openai.api_key = secrets["openai_api_key"]
 
 
