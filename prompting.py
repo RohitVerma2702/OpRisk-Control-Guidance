@@ -1,9 +1,12 @@
+import os
 import openai
 import toml
+import streamlit as st
 
 # secrets = toml.load("secrets.toml")
-openai.api_key = secrets["openai_api_key"]
+# openai.api_key = secrets["openai_api_key"]
 
+os.environ["OPENAI_API_KEY"] = st.secrets["secret_key"]
 
 def generate_controls(risk, num_controls, control_type):
     text = f"""Imagine you are an Operational Risk Officer.
