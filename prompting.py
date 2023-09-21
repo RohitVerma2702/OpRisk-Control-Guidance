@@ -11,11 +11,11 @@ openai.api_key = st.secrets["openai_api_key"]
 
 def generate_controls(risk, num_controls, control_type):
     text = f"""Imagine you are an Operational Risk Officer.
-        Suggest me {num_controls} {control_type} controls for {risk} risk.
+        Suggest me "{num_controls}" "{control_type}" controls for "{risk}" risk.
         Please present the data in an HTML table format with a header with a black background color and white center aligned font, use inline style for styling the header. Use the following columns:
-        Control Title: This should contain the control title with at least 5 to 10 words long like a meaningful sentence.
-        Control Description: This should describe the control in at least 50 to 100 words with providing a recommendation on the frequency of this control.
-        Control Type: This should show the control type.
+        1. Control Title: This should contain the control title with atleast 15 to 20 words long title like a meaningful sentence that uses verbs. Please make sure to not mention control type in control title. For example, instead of writing just the control title as "Multi Factor Authentication" you can use a statement like "Require users to do Multi Factor Authentication" like a sentence.
+        2. Control Description: This should describe the control in at least 50 to 100 words with providing a recommendation on the frequency of this control.
+        3. Control Type: This should show the control type. Please make sure to only write the control type name itself, do not use any suffix or prefix for example, instead of using "Preventative Control" use "Preventative" only. Make sure the control types belong to this list: "{control_type} only".
         Please take some time to think and then provide a complete response and make sure to provide only the HTML table, I don't need any explanation."""
 
     response = openai.ChatCompletion.create(
