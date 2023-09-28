@@ -43,6 +43,5 @@ if clicked:
         with st.spinner("Please wait..."):
             response = prompting.generate_controls(risk, num_controls, control_type)
 
-            st.header(risk)
             controls = response["choices"][0]["message"]["content"]
             st.write(controls, unsafe_allow_html=True)
